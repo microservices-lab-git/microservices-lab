@@ -1,0 +1,50 @@
+# Auth Service
+
+Este microservicio se encarga de la **autenticación y autorización** de usuarios dentro del sistema de microservicios. Gestiona el registro, inicio de sesión y validación de tokens JWT para acceder a los demás servicios.
+
+## 🚀 Funcionalidades principales
+
+* Registro de usuarios.
+* Inicio de sesión con validación de credenciales.
+* Generación y verificación de tokens JWT.
+* Middleware para proteger rutas privadas.
+
+## ⚙️ Tecnologías utilizadas
+
+* Node.js + Express
+* MongoDB o PostgreSQL
+* JSON Web Tokens (JWT)
+* bcrypt para el cifrado de contraseñas
+
+## 🧠 Estructura básica
+
+```
+auth-service/
+ ├── src/
+ │   ├── routes/
+ │   ├── controllers/
+ │   ├── models/
+ │   └── utils/
+ ├── .env
+ ├── package.json
+ └── README.md
+```
+
+## ▶️ Ejecución
+
+```bash
+npm install
+npm run start
+```
+
+El servicio corre por defecto en el puerto **4000** (configurable en `.env`).
+
+## 🧪 Endpoints básicos
+
+| Método | Ruta           | Descripción            |
+| ------ | -------------- | ---------------------- |
+| POST   | /auth/register | Crear un nuevo usuario |
+| POST   | /auth/login    | Iniciar sesión         |
+| GET    | /auth/verify   | Verificar token        |
+
+---

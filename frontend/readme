@@ -1,0 +1,41 @@
+# Frontend
+
+Interfaz gráfica del proyecto **Microservices Lab**. Consume los servicios de autenticación, blog y correo a través del Reverse Proxy.
+
+## 🚀 Funcionalidades principales
+
+* Pantallas de registro e inicio de sesión.
+* Visualización de publicaciones del blog.
+* Envío de formularios para contacto o recuperación.
+* Comunicación centralizada a través del Reverse Proxy.
+
+## ⚙️ Tecnologías utilizadas
+
+* React.js o Django Templates
+* Axios / Fetch API
+* Bootstrap o TailwindCSS
+
+## 🧠 Estructura básica
+
+```
+frontend/
+ ├── src/
+ │   ├── pages/
+ │   ├── components/
+ │   ├── services/
+ │   └── assets/
+ ├── public/
+ ├── package.json
+ └── README.md
+```
+
+## ▶️ Ejecución
+
+```bash
+npm install
+npm run dev
+```
+
+Servidor local por defecto en el puerto **3000**.
+
+---

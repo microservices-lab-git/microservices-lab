@@ -1,0 +1,50 @@
+# Reverse Proxy
+
+Este servicio actúa como **punto de entrada** al ecosistema de microservicios, gestionando las rutas y balanceando las peticiones hacia cada servicio.
+
+## 🚀 Funcionalidades principales
+
+* Redirección de tráfico según la ruta.
+* Balanceo básico de carga.
+* Encabezados de seguridad.
+* Soporte para HTTPS y CORS.
+
+## ⚙️ Tecnologías utilizadas
+
+* Nginx o Express Gateway
+* Docker (opcional)
+* Certbot (si se usa HTTPS)
+
+## 🧠 Ejemplo de configuración (Nginx)
+
+```nginx
+server {
+  listen 80;
+
+  location /auth/ {
+    proxy_pass http://localhost:4000/;
+  }
+
+  location /blog/ {
+    proxy_pass http://localhost:4100/;
+  }
+
+  location /email/ {
+    proxy_pass http://localhost:4200/;
+  }
+
+  location / {
+    proxy_pass http://localhost:3000/;
+  }
+}
+```
+
+## ▶️ Ejecución
+
+```bash
+nginx -c ./nginx.conf
+```
+
+El reverse proxy escucha por defecto en el puerto **80**.
+
+---

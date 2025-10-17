@@ -1,0 +1,50 @@
+# Blog Service
+
+Este microservicio gestiona el **contenido del blog**, incluyendo artículos, comentarios y categorías. Se comunica con el Auth Service para validar usuarios autenticados.
+
+## 🚀 Funcionalidades principales
+
+* CRUD de publicaciones (crear, leer, actualizar, eliminar).
+* Gestión de comentarios.
+* Filtrado por autor, categoría o fecha.
+* Integración con el Auth Service para control de acceso.
+
+## ⚙️ Tecnologías utilizadas
+
+* Node.js + Express
+* MongoDB
+* Axios para comunicación con otros servicios
+
+## 🧠 Estructura básica
+
+```
+blog-service/
+ ├── src/
+ │   ├── routes/
+ │   ├── controllers/
+ │   ├── models/
+ │   └── middleware/
+ ├── .env
+ ├── package.json
+ └── README.md
+```
+
+## ▶️ Ejecución
+
+```bash
+npm install
+npm run start
+```
+
+Puerto por defecto: **4100**
+
+## 🧪 Endpoints básicos
+
+| Método | Ruta       | Descripción            |
+| ------ | ---------- | ---------------------- |
+| GET    | /posts     | Listar publicaciones   |
+| POST   | /posts     | Crear publicación      |
+| PUT    | /posts/:id | Actualizar publicación |
+| DELETE | /posts/:id | Eliminar publicación   |
+
+---

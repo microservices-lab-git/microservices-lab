@@ -1,0 +1,52 @@
+# Email Service
+
+Este microservicio maneja el **envío de correos electrónicos** para notificaciones del sistema, recuperación de contraseñas y confirmaciones de registro.
+
+## 🚀 Funcionalidades principales
+
+* Envío de correos SMTP.
+* Plantillas dinámicas (HTML y texto).
+* Integración con Auth Service para mensajes de bienvenida o recuperación.
+* Soporte para colas (RabbitMQ / Redis) opcional.
+
+## ⚙️ Tecnologías utilizadas
+
+* Node.js + Express
+* Nodemailer
+* Dotenv para configuración
+* (Opcional) Redis o RabbitMQ para colas de mensajes
+
+## 🧠 Estructura básica
+
+```
+email-service/
+ ├── src/
+ │   ├── controllers/
+ │   ├── templates/
+ │   └── utils/
+ ├── .env
+ ├── package.json
+ └── README.md
+```
+
+## ▶️ Ejecución
+
+```bash
+npm install
+npm run start
+```
+
+Puerto por defecto: **4200**
+
+## 🧪 Ejemplo de uso
+
+```bash
+POST /email/send
+{
+  "to": "user@example.com",
+  "subject": "Bienvenido",
+  "body": "Gracias por registrarte en nuestro servicio."
+}
+```
+
+---
