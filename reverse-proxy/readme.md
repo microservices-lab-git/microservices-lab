@@ -18,3 +18,5 @@ docker compose up reverse-proxy
 - /api/blog → blog-service
 - /api/email → email-service
 - / → frontend
+
+##asdasd
