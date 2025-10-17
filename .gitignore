@@ -1,1 +1,25 @@
-.env.example
+# ⚙️ Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# 🐍 Entornos virtuales de Python
+venv/
+.venv/
+
+# 📦 Node.js
+node_modules/
+**/node_modules/
+
+# 🧪 Archivos temporales / compilados
+dist/
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+
+# 🖥️ Configuración de IDE
+.vscode/
+.idea/
