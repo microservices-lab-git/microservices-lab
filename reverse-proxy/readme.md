@@ -11,6 +11,8 @@ Servicio encargado del enrutamiento y balanceo de peticiones entre microservicio
 reverse-proxy/
 ■■■ nginx.conf
 ■■■ Dockerfile
+texto texto texto
+texto
 ## Ejecución
 docker compose up reverse-proxy
 ## Rutas configuradas
