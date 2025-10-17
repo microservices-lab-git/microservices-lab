@@ -17,4 +17,3 @@ email-service/
 docker compose up email-service
 ## Endpoints
 - POST /api/email/send
-###xdddd
