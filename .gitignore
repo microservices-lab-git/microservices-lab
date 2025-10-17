@@ -1,0 +1,103 @@
+# ==========================
+
+# 🧩 ARCHIVOS DE CONFIGURACIÓN Y SISTEMA
+
+# ==========================
+
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# ==========================
+
+# ⚙️ ARCHIVOS DE ENTORNO
+
+# ==========================
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example
+
+# ==========================
+
+# 📦 DEPENDENCIAS
+
+# ==========================
+
+node_modules/
+**/node_modules/
+
+# ==========================
+
+# 🖼️ COMPILACIONES Y BUILD
+
+# ==========================
+
+dist/
+build/
+coverage/
+.cache/
+out/
+tmp/
+*.tsbuildinfo
+
+# ==========================
+
+# ⚛️ FRONTEND
+
+# ==========================
+
+frontend/.next/
+frontend/.nuxt/
+frontend/.cache/
+frontend/yarn-error.log
+
+# ==========================
+
+# 🐋 DOCKER Y OTROS
+
+# ==========================
+
+docker-compose.override.yml
+*.pid
+*.seed
+*.bak
+
+# ==========================
+
+# 🧪 TESTS Y REPORTES
+
+# ==========================
+
+coverage/
+reports/
+test-results/
+
+# ==========================
+
+# 🔒 CLAVES Y CERTIFICADOS
+
+# ==========================
+
+*.pem
+*.key
+*.crt
+
+# ==========================
+
+# 🗃️ IDE Y EDITORES
+
+# ==========================
+
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.vs/
