@@ -11,6 +11,7 @@ microservicios.
 - MongoDB o PostgreSQL
 - JWT
 - Docker
+- xddddddd
 ## Estructura
 auth-service/
 ■■■ src/
