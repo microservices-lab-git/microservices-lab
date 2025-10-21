@@ -1,0 +1,22 @@
+﻿.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.env.local
+.vscode/
+dist/
+build/
+*.egg-info/
+*.sqlite3
+.DS_Store
+# Docker
+docker-compose.override.yml
+pgdata/
+*.log
+# IDE
+*.idea/
+# Node
+node_modules/
