@@ -21,7 +21,7 @@ Servicio de autenticación basado en Django + DRF con JWT (SimpleJWT).
    ```bash
    docker exec auth_service python manage.py migrate
    ```
-3. (Opcional) Crear un usuario de prueba:
+3. (Opcional) Crear un usuario de pruebas:
    ```bash
    docker exec auth_service python -c "import os; os.environ['DJANGO_SETTINGS_MODULE']='auth_service.settings'; import django; django.setup(); from users.models import User; User.objects.create_user('usuario@ejemplo.com','contrasena123')"
    ```
