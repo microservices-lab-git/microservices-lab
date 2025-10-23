@@ -19,4 +19,4 @@ docker compose up reverse-proxy
 - /api/auth → auth-service
 - /api/blog → blog-service
 - /api/email → email-service
-- / → frontend
+- / → frontend 
