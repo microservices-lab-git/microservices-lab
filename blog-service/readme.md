@@ -8,7 +8,7 @@ Servicio encargado de la gestión de publicaciones y contenido.
 - Node.js / Express
 - MongoDB / Mongoose
 - Docker
-## Estructura
+## Estructurazzzz
 blog-service/
 ■■■ src/
 ■■■ Dockerfile
