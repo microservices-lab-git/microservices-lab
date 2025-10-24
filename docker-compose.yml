@@ -22,5 +22,23 @@ services:
     ports:
       - "6379:6379"
 
+  auth:
+    build: ./auth-service
+    container_name: auth_service
+    restart: always
+    environment:
+      - DEBUG=1
+      - DB_HOST=mysql
+      - DB_NAME=main_db
+      - DB_USER=devuser
+      - DB_PASS=devpass
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - "8000:8000"
+
 volumes:
   mysqldata:
