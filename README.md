@@ -11,7 +11,6 @@
 ### Servicios base:
 - PostgreSQL (5432)
 - Redis (6379)
-
 ## Checklist Día 1
 - Estructura de carpetas creada (auth-service, blog-service, email-service, frontend, reverse-proxy)
 - docker-compose.yml con PostgreSQL y Redis configurados
