@@ -5,36 +5,36 @@ Script para probar conexiones a PostgreSQL y Redis
 import os
 import sys
 
-def test_postgres_connection():
-    """Prueba la conexión a PostgreSQL"""
+def test_mysql_connection():
+    """Prueba la conexión a MySQL"""
     try:
-        import psycopg2
+        import mysql.connector
         
         # Variables de entorno
         db_config = {
             'host': 'localhost',
-            'port': 5432,
-            'database': os.getenv('POSTGRES_DB', 'main_db'),
-            'user': os.getenv('POSTGRES_USER', 'devuser'),
-            'password': os.getenv('POSTGRES_PASSWORD', 'devpass')
+            'port': 3307,
+            'database': os.getenv('MYSQL_DATABASE', 'main_db'),
+            'user': os.getenv('MYSQL_USER', 'devuser'),
+            'password': os.getenv('MYSQL_PASSWORD', 'devpass')
         }
         
-        print("🔍 Probando conexión a PostgreSQL...")
-        conn = psycopg2.connect(**db_config)
+        print("🔍 Probando conexión a MySQL...")
+        conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
-        cursor.execute('SELECT version();')
+        cursor.execute('SELECT VERSION();')
         version = cursor.fetchone()
         
-        print(f"✅ PostgreSQL conectado: {version[0]}")
+        print(f"✅ MySQL conectado: {version[0]}")
         cursor.close()
         conn.close()
         return True
         
     except ImportError:
-        print("❌ psycopg2 no instalado. Instalar con: pip install psycopg2-binary")
+        print("❌ mysql-connector-python no instalado. Instalar con: pip install mysql-connector-python")
         return False
     except Exception as e:
-        print(f"❌ Error conectando a PostgreSQL: {e}")
+        print(f"❌ Error conectando a MySQL: {e}")
         return False
 
 def test_redis_connection():
@@ -77,20 +77,20 @@ def main():
     
     # Mostrar variables de entorno
     print("📋 Variables de entorno:")
-    print(f"   POSTGRES_DB: {os.getenv('POSTGRES_DB', 'main_db')}")
-    print(f"   POSTGRES_USER: {os.getenv('POSTGRES_USER', 'devuser')}")
+    print(f"   MYSQL_DATABASE: {os.getenv('MYSQL_DATABASE', 'main_db')}")
+    print(f"   MYSQL_USER: {os.getenv('MYSQL_USER', 'devuser')}")
     print(f"   REDIS_HOST: {os.getenv('REDIS_HOST', 'localhost')}")
     print(f"   REDIS_PORT: {os.getenv('REDIS_PORT', '6379')}\n")
     
     # Ejecutar pruebas
-    postgres_ok = test_postgres_connection()
+    mysql_ok = test_mysql_connection()
     redis_ok = test_redis_connection()
     
     print("\n📊 Resumen:")
-    print(f"   PostgreSQL: {'✅' if postgres_ok else '❌'}")
+    print(f"   MySQL: {'✅' if mysql_ok else '❌'}")
     print(f"   Redis: {'✅' if redis_ok else '❌'}")
     
-    if postgres_ok and redis_ok:
+    if mysql_ok and redis_ok:
         print("\n🎉 ¡Todas las conexiones funcionan correctamente!")
         sys.exit(0)
     else:

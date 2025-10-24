@@ -10,5 +10,5 @@ Servicio para gestión de publicaciones, autores y categorías.
 
 ## Tecnologías
 - Django REST Framework
-- PostgreSQL
+- MySQL
 - Redis para caché

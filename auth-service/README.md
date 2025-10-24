@@ -11,4 +11,4 @@ Servicio de autenticación y manejo de tokens JWT.
 ## Tecnologías
 - Django REST Framework
 - JWT Authentication
-- PostgreSQL
+- MySQL

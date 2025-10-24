@@ -10,7 +10,7 @@
 
 ## Servicios base
 
-- PostgreSQL (5432)
+- MySQL (3307)
 - Redis (6379)
 
 ## Configuración inicial
