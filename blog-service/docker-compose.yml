@@ -1,0 +1,44 @@
+﻿version: '3.8'
+
+services:
+  blog:
+    build: .
+    container_name: blog_service
+    restart: always
+    environment:
+      - DEBUG=1
+      - DB_HOST=db_mysql
+      - DB_NAME=main_db
+      - DB_USER=devuser
+      - DB_PASS=devpass
+      - REDIS_HOST=cache_redis
+      - REDIS_PORT=6379
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db_mysql
+      - cache_redis
+
+  db_mysql:
+    image: mysql:8.0
+    container_name: db_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: main_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+  cache_redis:
+    image: redis:7
+    container_name: cache_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysqldata:
