@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Blog Service - Día 3
+  version: 1.0.0
+  description: Endpoints públicos del servicio Blog implementados en Día 3 (Django + DRF)
+servers:
+  - url: http://localhost:8001
+    description: Servidor local de desarrollo
+tags:
+  - name: Health
+    description: Comprobación de salud del servicio
+  - name: Categories
+    description: Endpoints de categorías
+  - name: Posts
+    description: Endpoints de posts
+paths:
+  /healthz:
+    get:
+      tags: [Health]
+      summary: Health check
+      description: Verifica conectividad con base de datos y Redis.
+      responses:
+        '200':
+          description: Estado de salud.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                db: true
+                redis: true
+
+  /api/categories/:
+    get:
+      tags: [Categories]
+      summary: Listar categorías activas
+      description: Retorna lista paginada de categorías activas. Cache TTL ~90s.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          description: Número de página.
+      responses:
+        '200':
+          description: Lista paginada de categorías activas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCategoryList'
+              example:
+                count: 1
+                next: null
+                previous: null
+                results:
+                  - id: 1
+                    name: General
+                    slug: general
+                    is_active: true
+
+  /api/posts/:
+    get:
+      tags: [Posts]
+      summary: Listar posts publicados
+      description: Lista paginada de posts con estado 'published' ordenados por fecha de publicación descendente.
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          required: false
+          description: Texto para buscar en título y cuerpo.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          description: Número de página.
+      responses:
+        '200':
+          description: Lista paginada de posts publicados.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPostList'
+              example:
+                count: 1
+                next: null
+                previous: null
+                results:
+                  - id: 1
+                    title: Hola Mundo
+                    slug: hola-mundo
+                    body: Contenido de ejemplo...
+                    status: published
+                    published_at: '2025-10-29T13:24:22.155978Z'
+                    views: 0
+                    author: 1
+                    category: 1
+
+  /api/posts/{slug}:
+    get:
+      tags: [Posts]
+      summary: Obtener detalle de post por slug
+      description: Retorna detalle de un post publicado. Cache TTL ~120s. Sin barra final en la ruta.
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+          description: Slug del post (ej. 'hola-mundo').
+      responses:
+        '200':
+          description: Detalle del post publicado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              example:
+                id: 1
+                title: Hola Mundo
+                slug: hola-mundo
+                body: Contenido de ejemplo...
+                status: published
+                published_at: '2025-10-29T13:24:22.155978Z'
+                views: 0
+                author: 1
+                category: 1
+        '404':
+          description: No encontrado si el slug no existe o el post no está publicado.
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        db:
+          type: boolean
+        redis:
+          type: boolean
+      required: [db, redis]
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        slug:
+          type: string
+        is_active:
+          type: boolean
+      required: [name, slug, is_active]
+
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+        slug:
+          type: string
+        body:
+          type: string
+        status:
+          type: string
+          enum: [draft, published]
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+        views:
+          type: integer
+        author:
+          type: integer
+        category:
+          type: integer
+      required: [title, slug, body, status, author, category]
+
+    PaginatedCategoryList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+
+    PaginatedPostList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'

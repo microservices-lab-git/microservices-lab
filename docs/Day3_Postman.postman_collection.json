@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "Día 3 - Blog Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Endpoints del Blog Service (Django + DRF) trabajados en Día 3"
+  },
+  "item": [
+    {
+      "name": "Healthz",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/healthz",
+          "host": ["{{baseUrl}}"],
+          "path": ["healthz"]
+        }
+      }
+    },
+    {
+      "name": "Categories - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/categories/",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "categories", ""]
+        }
+      }
+    },
+    {
+      "name": "Posts - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/posts/?search={{search}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "posts", ""],
+          "query": [
+            { "key": "search", "value": "{{search}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Post - Detail by slug",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/posts/{{postSlug}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "posts", "{{postSlug}}"]
+        }
+      }
+    },
+    {
+      "name": "Swagger UI",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/docs/",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "docs", ""]
+        }
+      }
+    },
+    {
+      "name": "OpenAPI Schema",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/schema/",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "schema", ""]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8001" },
+    { "key": "postSlug", "value": "hola-mundo" },
+    { "key": "search", "value": "" }
+  ]
+}

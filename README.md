@@ -25,3 +25,6 @@
 ## Notas
 - No subir `.env` al repositorio. Usar `.env.example` como referencia.
 - En caso de errores de arranque, inspeccionar logs y validar puertos libres.
+## Guía Día 3 (Blog Service)
+
+La guía detallada para la implementación del servicio de Blog está disponible en `docs/Guia_Dia3.md`. Incluye preparación de entorno, estructura del proyecto, Docker, configuración (Django/DRF/PostgreSQL/Redis), endpoints públicos con cache, health checks, Swagger/OpenAPI y pasos de validación.
